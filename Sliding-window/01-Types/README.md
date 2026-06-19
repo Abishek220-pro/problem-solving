@@ -1,60 +1,66 @@
-### TYPE 1: Constant / Fixed Size Window:
+## TYPE 1: Constant / Fixed Size Window
 
-                    When to use: Look for an exact number or the letter "K" given as a fixed size.
+**When to use:** Look for an exact number or the letter **K** given as a fixed size.
 
-                    Key Words in Problem: "of length K", "subarray of size 3", "substring of length K".
+**Key words:**
 
-                    Example Questions: * Maximum Sum Subarray of Size K
-                                     
+* "of length K"
+* "subarray of size 3"
+* "substring of length K"
 
-   public int fixedWindowTwoLoops(int[] arr, int k) {
+**Example questions:**
+
+* Maximum Sum Subarray of Size K
+
+```java
+public int fixedWindowTwoLoops(int[] arr, int k) {
     int left = 0;
     int right = 0;
     int sum = 0;
-    
-    // 1️⃣ FIRST LOOP: Build the initial window of size K (from index 0 to k-1)
 
+    // Build initial window
     while (right < k) {
         sum += arr[right];
-        right++; 
+        right++;
     }
-    
-    int maxVal = sum;  // Lock the first window's sum
-    
-    // 2️⃣ SECOND LOOP: Slide the window across the remaining elements
 
+    int maxVal = sum;
+
+    // Slide window
     while (right < arr.length) {
-
-        sum += arr[right]; // Add the incoming element on the right
-        
-        // Mirror Rule: Remove the outgoing element on the left
-
+        sum += arr[right];
         sum -= arr[left];
-        
-        // Update the maximum answer for the current window
 
         maxVal = Math.max(maxVal, sum);
-        
-        // Slide both pointers forward together
+
         left++;
-        right++; 
+        right++;
     }
-    
+
     return maxVal;
 }
-### TYPE 2 : Longest subarray/Substring where<condition>
-                      When to use: The problem asks you to stretch the window to find the biggest 
-                      possible answer under a certain limit.
+```
 
-                      Key Words in Problem: "Longest substring...", "Maximum consecutive...", "with at most K...".
+---
 
-                       Example Questions:
+## TYPE 2: Longest Subarray / Substring Where `<condition>`
 
-                             Longest Substring Without Repeating Characters
-                             
-                             Max Consecutive Ones III
+**When to use:** Find the biggest possible valid window.
 
-## Brute fource:
+**Key words:**
+
+* "Longest substring"
+* "Maximum consecutive"
+* "At most K"
+
+**Example questions:**
+
+* Longest Substring Without Repeating Characters
+* Max Consecutive Ones III
+
+### Brute Force
+
+```java
 public int longestSubarrayBruteForce(int[] nums, int k) {
     int maxLen = 0;
     
@@ -78,7 +84,11 @@ public int longestSubarrayBruteForce(int[] nums, int k) {
     }
     return maxLen;
 }
-## Better :
+```
+
+### Better
+
+```java
 public int longestSubarrayBetter(int[] nums, int k) {
     int left = 0, right = 0;
     int maxLen = 0;
@@ -102,8 +112,11 @@ public int longestSubarrayBetter(int[] nums, int k) {
     }
     return maxLen;
 }
-## optimised :
+```
 
+### Optimized
+
+```java
 public int longestSubarrayOptimized(int[] nums, int k) {
     int left = 0, right = 0;
     int maxLen = 0;
@@ -129,18 +142,33 @@ public int longestSubarrayOptimized(int[] nums, int k) {
     }
     return maxLen;
 }
-### type 3 :no of subarray where <condition>
-                     When to use: The problem does not ask for length. It asks "How many?" total subarrays exist.
+```
 
-                      Key Words in Problem: "Count the number of subarrays...", "Subarrays with exactly K...", "Number of substrings...".
+---
 
-                     Example Questions:
+## TYPE 3: Number of Subarrays Where `<condition>`
 
-                                      Subarrays with K Different Integers
-                                      
-                                      Binary Subarrays With Sum
+**When to use:** The problem asks **"How many?"**
 
-         public class SlidingWindowMastery {
+**Key words:**
+
+* "Count the number of subarrays"
+* "Subarrays with exactly K"
+* "Number of substrings"
+
+**Example questions:**
+
+* Subarrays with K Different Integers
+* Binary Subarrays With Sum
+
+### Formula
+
+```text
+Exactly(K) = AtMost(K) - AtMost(K - 1)
+```
+
+```java
+ public class SlidingWindowMastery {
          
              /**
               * Master Function: Finds the number of subarrays meeting a criteria EXACTLY K.
@@ -218,41 +246,45 @@ public int longestSubarrayOptimized(int[] nums, int k) {
              }
          }
 
-### Type 4 : shortest / minimun window where <condition>
-                                   When to use: The problem asks you to shrink the window to find the smallest possible answer that satisfies a target.
-                                   
-                                   Key Words in Problem: "Minimum size subarray...", "Shortest substring containing...", "Smallest window...".
-                                   
-                                   Example Questions:
-                                   
-                                   Minimum Size Subarray Sum
-                                   
-                                   Minimum Window Substring
+```
 
-                public int shortestWindowOptimized(int[] nums, int target) {
-                       int left = 0;
-                       int right = 0;
-                       int minLen = Integer.MAX_VALUE;
-                       int sum = 0;
-                       
-                       while (right < nums.length) {
-                           // 📦 BOX 1: RIGHT ENTERING
-                           sum += nums[right];
-                           
-                           // 📦 BOX 2: SHRINK CONDITION
-                           // The moment the window becomes VALID, try to minimize it
-                           while (sum >= target) {
-                               // 📦 BOX 3: UPDATE ANSWER
-                               minLen = Math.min(minLen, right - left + 1);
-                               
-                               // Mirror Rule: Remove left element and contract window
-                               sum -= nums[left];
-                               left++;
-                           }
-                           
-                           right++; // Always expand right
-                       }
-                       
-                       return minLen == Integer.MAX_VALUE ? 0 : minLen;
-                }
-                       
+---
+
+## TYPE 4: Shortest / Minimum Window Where `<condition>`
+
+**When to use:** Find the smallest valid window.
+
+**Key words:**
+
+* "Minimum size subarray"
+* "Shortest substring"
+* "Smallest window"
+
+**Example questions:**
+
+* Minimum Size Subarray Sum
+* Minimum Window Substring
+
+```java
+public int shortestWindowOptimized(int[] nums, int target) {
+    int left = 0;
+    int right = 0;
+    int minLen = Integer.MAX_VALUE;
+    int sum = 0;
+
+    while (right < nums.length) {
+        sum += nums[right];
+
+        while (sum >= target) {
+            minLen = Math.min(minLen, right - left + 1);
+
+            sum -= nums[left];
+            left++;
+        }
+
+        right++;
+    }
+
+    return minLen == Integer.MAX_VALUE ? 0 : minLen;
+}
+```

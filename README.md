@@ -58,18 +58,6 @@ problem-solving/
 └── .gitignore
 ```
 
----
-
-## 🔥 Current Focus
-
-```text
-Pattern : Sliding Window
-Goal    : Master variable-size windows
-Target  : 20 problems
-```
-
----
-
 ## 🛠️ Workflow
 
 Learn → Understand Pattern → Solve → Debug → Document → Review

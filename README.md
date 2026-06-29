@@ -34,14 +34,14 @@ Building strong problem-solving skills through:
 
 ## 🗺️ Learning Roadmap
 
-| Topic               | Status | Progress |
-| :------------------ | :----: | :------: |
-| Sliding Window      |   🟢   |  12 / 20 |
-| Two Pointers        |    ⚪   |  0 / 15  |
-| Binary Search       |    ⚪   |  0 / 20  |
-| Prefix Sum          |    ⚪   |  0 / 10  |
-| Trees               |    ⚪   |  0 / 25  |
-| Dynamic Programming |    ⚪   |  0 / 40  |
+| Topic               | Progress |
+| :------------------ | :------: |
+| Sliding Window      |  12 / 20 |
+| Two Pointers        |  0 / 15  |
+| Binary Search       |  0 / 20  |
+| Prefix Sum          |  0 / 10  |
+| Trees               |  0 / 25  |
+| Dynamic Programming |  0 / 40  |
 
 ---
 

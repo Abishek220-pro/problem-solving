@@ -36,7 +36,7 @@ Building strong problem-solving skills through:
 
 | Topic               | Progress |
 | :------------------ | :------: |
-| Sliding Window      |  12 / 20 |
+| Sliding Window      |  0 / 20 |
 | Two Pointers        |  0 / 15  |
 | Binary Search       |  0 / 20  |
 | Prefix Sum          |  0 / 10  |
